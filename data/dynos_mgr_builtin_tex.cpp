@@ -2391,7 +2391,7 @@ static const struct BuiltinTexInfo sDynosBuiltinTexs[] = {
 
 #endif
 
-#ifdef VERSION_JP
+#if defined(VERSION_JP)
     define_builtin_tex(inside_castle_seg7_texture_07010800, "levels/castle_inside/23.rgba16.png", 64, 32, 16),
     define_builtin_tex(inside_castle_seg7_texture_07011800, "levels/castle_inside/24.rgba16.png", 64, 32, 16),
 #else
