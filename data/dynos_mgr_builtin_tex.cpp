@@ -2409,11 +2409,7 @@ static const struct BuiltinTexInfo sDynosBuiltinTexs[] = {
     define_builtin_tex(intro_seg7_texture_0700B4A0, "levels/intro/2_copyright.rgba16.png", 128, 16, 16),
 #endif
 
-#ifdef VERSION_EU
-    define_builtin_tex(intro_seg7_texture_0700C4A0, "levels/intro/3_eu_tm.rgba16.png", 16, 16, 16),
-#elif defined(VERSION_SH)
-    define_builtin_tex(intro_seg7_texture_0700C4A0, "levels/intro/3_sh_tm.rgba16.png", 16, 16, 16),
-#else
+#ifndef VERSION_EU
     define_builtin_tex(intro_seg7_texture_0700C4A0, "levels/intro/3_tm.rgba16.png", 16, 16, 16),
 #endif
 };
