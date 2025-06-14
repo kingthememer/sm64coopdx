@@ -11099,10 +11099,8 @@ function geo_get_current_held_object()
 end
 
 --- @param tex Pointer_integer
---- @param out Color
---- @return boolean
---- Calculates the average color of a given texture. Returns true if success
-function get_texture_average_color(tex, out)
+--- Converts a texture's pixels to a Lua table. Returns nil if failed. Otherwise, returns a table as a pure memory buffer. Supports rgba16 and rgba32 textures.
+function texture_to_lua_table(tex)
     -- ...
 end
 
@@ -11120,7 +11118,7 @@ end
 --- @param z number
 --- @param objSetupFunction function
 --- @return Object
---- Spawns a synchronized object in at `x`, `y`, and `z` as a child object of the local Mario with his rotation. You can change the fields of the object in `objSetupFunction`
+--- Spawns a synchronized object at `x`, `y`, and `z` as a child object of the local Mario with his rotation. You can change the fields of the object in `objSetupFunction`
 function spawn_sync_object(behaviorId, modelId, x, y, z, objSetupFunction)
     -- ...
 end
@@ -11132,7 +11130,7 @@ end
 --- @param z number
 --- @param objSetupFunction function
 --- @return Object
---- Spawns a synchronized object in at `x`, `y`, and `z` as a child object of the local Mario with his rotation. You can change the fields of the object in `objSetupFunction`
+--- Spawns a non-synchronized object at `x`, `y`, and `z` as a child object of the local Mario with his rotation. You can change the fields of the object in `objSetupFunction`
 function spawn_non_sync_object(behaviorId, modelId, x, y, z, objSetupFunction)
     -- ...
 end
