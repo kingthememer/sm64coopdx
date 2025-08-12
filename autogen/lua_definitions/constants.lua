@@ -2532,7 +2532,19 @@ DIALOG_166   = 166 --- @type DialogId
 DIALOG_167   = 167 --- @type DialogId
 DIALOG_168   = 168 --- @type DialogId
 DIALOG_169   = 169 --- @type DialogId
-DIALOG_COUNT = 170 --- @type DialogId
+
+-- END CUTSCENE DIALOG
+DIALOG_170   = 170 --- @type DialogId
+DIALOG_171   = 171 --- @type DialogId
+DIALOG_172   = 172 --- @type DialogId
+DIALOG_173   = 173 --- @type DialogId
+DIALOG_174   = 174 --- @type DialogId
+DIALOG_175   = 175 --- @type DialogId
+DIALOG_176   = 176 --- @type DialogId
+DIALOG_177   = 177 --- @type DialogId
+DIALOG_178   = 178 --- @type DialogId
+
+DIALOG_COUNT = 179 --- @type DialogId
 
 --- @alias DialogId
 --- | `DIALOG_NONE`

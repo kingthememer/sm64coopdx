@@ -340,3 +340,14 @@ DEFINE_DIALOG(DIALOG_167, 1, 4, 30, 200, 170)
 DEFINE_DIALOG(DIALOG_168, 1, 5, 30, 200, 97)
 
 DEFINE_DIALOG(DIALOG_169, 1, 4, 30, 200, 107)
+
+// END CUTSCENE DIALOG
+DEFINE_DIALOG(DIALOG_170, 1, 1, 30, 200, 7)  // "Mario!"
+DEFINE_DIALOG(DIALOG_171, 1, 1, 30, 200, 52) // "The power of the Stars is restored to the castle..."
+DEFINE_DIALOG(DIALOG_172, 1, 1, 30, 200, 31) // "...and it's all thanks to you!"
+DEFINE_DIALOG(DIALOG_173, 1, 1, 30, 200, 18) // "Thank you, Mario!"
+DEFINE_DIALOG(DIALOG_174, 1, 1, 30, 200, 43) // "We have to do something special for you..."
+DEFINE_DIALOG(DIALOG_175, 1, 1, 30, 200, 19) // "Listen, everybody,"
+DEFINE_DIALOG(DIALOG_176, 1, 1, 30, 200, 31) // "let's bake a delicious cake..."
+DEFINE_DIALOG(DIALOG_177, 1, 1, 30, 200, 16) // "...for Mario..."
+DEFINE_DIALOG(DIALOG_178, 1, 1, 30, 200, 7)  // "Mario!" - Originally "Mario?" (???)

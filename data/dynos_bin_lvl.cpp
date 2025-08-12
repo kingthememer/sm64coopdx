@@ -305,6 +305,18 @@ s64 DynOS_Lvl_ParseLevelScriptConstants(const String& _Arg, bool* found) {
     lvl_constant(DIALOG_167);
     lvl_constant(DIALOG_168);
     lvl_constant(DIALOG_169);
+
+    // END CUTSCENE DIALOG
+    lvl_constant(DIALOG_170);
+    lvl_constant(DIALOG_171);
+    lvl_constant(DIALOG_172);
+    lvl_constant(DIALOG_173);
+    lvl_constant(DIALOG_174);
+    lvl_constant(DIALOG_175);
+    lvl_constant(DIALOG_176);
+    lvl_constant(DIALOG_177);
+    lvl_constant(DIALOG_178);
+
     lvl_constant(DIALOG_COUNT);
 
     // global scripts

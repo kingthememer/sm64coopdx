@@ -1786,72 +1786,6 @@ void render_dialog_string_color(s8 linesPerBox) {
 s16 gMenuMode = -1;
 s16 gPrevMenuMode = -1;
 
-u8 *gEndCutsceneStringsEn[] = {
-    INGAME_TEXT_PTR(TEXT_FILE_MARIO_EXCLAMATION),
-    INGAME_TEXT_PTR(TEXT_POWER_STARS_RESTORED),
-    INGAME_TEXT_PTR(TEXT_THANKS_TO_YOU),
-    INGAME_TEXT_PTR(TEXT_THANK_YOU_MARIO),
-    INGAME_TEXT_PTR(TEXT_SOMETHING_SPECIAL),
-    INGAME_TEXT_PTR(TEXT_LISTEN_EVERYBODY),
-    INGAME_TEXT_PTR(TEXT_LETS_HAVE_CAKE),
-    INGAME_TEXT_PTR(TEXT_FOR_MARIO),
-    // This [8] string is actually unused. In the cutscene handler, the developers do not
-    // set the 8th one, but use the first string again at the very end, so Peach ends up
-    // saying "Mario!" twice. It is likely that she was originally meant to say "Mario?" at
-    // the end but the developers changed their mind, possibly because the line recorded
-    // sounded more like an exclamation than a question.
-    INGAME_TEXT_PTR(TEXT_FILE_MARIO_QUESTION),
-    NULL
-};
-
-#ifdef VERSION_EU
-u8 gEndCutsceneStrFr0[] = { TEXT_FILE_MARIO_EXCLAMATION };
-u8 gEndCutsceneStrFr1[] = { TEXT_POWER_STARS_RESTORED_FR };
-u8 gEndCutsceneStrFr2[] = { TEXT_THANKS_TO_YOU_FR };
-u8 gEndCutsceneStrFr3[] = { TEXT_THANK_YOU_MARIO_FR };
-u8 gEndCutsceneStrFr4[] = { TEXT_SOMETHING_SPECIAL_FR };
-u8 gEndCutsceneStrFr5[] = { TEXT_COME_ON_EVERYBODY_FR };
-u8 gEndCutsceneStrFr6[] = { TEXT_LETS_HAVE_CAKE_FR };
-u8 gEndCutsceneStrFr7[] = { TEXT_FOR_MARIO_FR };
-u8 gEndCutsceneStrFr8[] = { TEXT_FILE_MARIO_QUESTION };
-
-u8 *gEndCutsceneStringsFr[] = {
-    gEndCutsceneStrFr0,
-    gEndCutsceneStrFr1,
-    gEndCutsceneStrFr2,
-    gEndCutsceneStrFr3,
-    gEndCutsceneStrFr4,
-    gEndCutsceneStrFr5,
-    gEndCutsceneStrFr6,
-    gEndCutsceneStrFr7,
-    gEndCutsceneStrFr8,
-    NULL
-};
-
-u8 gEndCutsceneStrDe0[] = { TEXT_FILE_MARIO_EXCLAMATION };
-u8 gEndCutsceneStrDe1[] = { TEXT_POWER_STARS_RESTORED_DE };
-u8 gEndCutsceneStrDe2[] = { TEXT_THANKS_TO_YOU_DE };
-u8 gEndCutsceneStrDe3[] = { TEXT_THANK_YOU_MARIO_DE };
-u8 gEndCutsceneStrDe4[] = { TEXT_SOMETHING_SPECIAL_DE };
-u8 gEndCutsceneStrDe5[] = { TEXT_COME_ON_EVERYBODY_DE };
-u8 gEndCutsceneStrDe6[] = { TEXT_LETS_HAVE_CAKE_DE };
-u8 gEndCutsceneStrDe7[] = { TEXT_FOR_MARIO_DE };
-u8 gEndCutsceneStrDe8[] = { TEXT_FILE_MARIO_QUESTION };
-
-u8 *gEndCutsceneStringsDe[] = {
-    gEndCutsceneStrDe0,
-    gEndCutsceneStrDe1,
-    gEndCutsceneStrDe2,
-    gEndCutsceneStrDe3,
-    gEndCutsceneStrDe4,
-    gEndCutsceneStrDe5,
-    gEndCutsceneStrDe6,
-    gEndCutsceneStrDe7,
-    gEndCutsceneStrDe8,
-    NULL
-};
-#endif
-
 u16 gCutsceneMsgFade = 0;
 s16 gCutsceneMsgIndex = -1;
 s16 gCutsceneMsgDuration = -1;
@@ -2105,31 +2039,17 @@ void do_cutscene_handler(void) {
         return;
     }
 
+    struct DialogEntry *dialog = dialog_table_get(gCutsceneMsgIndex);
+    const u8* str = sOverrideDialogString ? sHookString : dialog->str;
+
     create_dl_ortho_matrix();
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gCutsceneMsgFade);
 
-#ifdef VERSION_EU
-    switch (eu_get_language()) {
-        case LANGUAGE_ENGLISH:
-            x = get_str_x_pos_from_center(gCutsceneMsgXOffset, gEndCutsceneStringsEn[gCutsceneMsgIndex], 10.0f);
-            print_generic_string(x, 240 - gCutsceneMsgYOffset, gEndCutsceneStringsEn[gCutsceneMsgIndex]);
-            break;
-        case LANGUAGE_FRENCH:
-            x = get_str_x_pos_from_center(gCutsceneMsgXOffset, gEndCutsceneStringsFr[gCutsceneMsgIndex], 10.0f);
-            print_generic_string(x, 240 - gCutsceneMsgYOffset, gEndCutsceneStringsFr[gCutsceneMsgIndex]);
-            break;
-        case LANGUAGE_GERMAN:
-            x = get_str_x_pos_from_center(gCutsceneMsgXOffset, gEndCutsceneStringsDe[gCutsceneMsgIndex], 10.0f);
-            print_generic_string(x, 240 - gCutsceneMsgYOffset, gEndCutsceneStringsDe[gCutsceneMsgIndex]);
-            break;
-    }
-#else
     // get the x coordinate of where the cutscene string starts.
-    x = get_str_x_pos_from_center(gCutsceneMsgXOffset, gEndCutsceneStringsEn[gCutsceneMsgIndex], 10.0f);
-    print_generic_string(x, 240 - gCutsceneMsgYOffset, gEndCutsceneStringsEn[gCutsceneMsgIndex]);
-#endif
+    x = get_str_x_pos_from_center(gCutsceneMsgXOffset, str, 10.0f);
+    print_generic_string(x, 240 - gCutsceneMsgYOffset, str);
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 

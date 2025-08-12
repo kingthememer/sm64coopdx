@@ -2649,7 +2649,7 @@ static void end_peach_cutscene_dialog_1(struct MarioState *m) {
 #else
         case 230:
 #endif
-            set_cutscene_message(160, 227, 0, 30);
+            set_cutscene_message(160, 227, 170, 30);
 #ifndef VERSION_JP
             seq_player_lower_volume(SEQ_PLAYER_LEVEL, 60, 40);
             play_sound(SOUND_PEACH_MARIO, sEndPeachObj->header.gfx.cameraToObject);
@@ -2670,7 +2670,7 @@ static void end_peach_cutscene_dialog_1(struct MarioState *m) {
 #else
         case 290:
 #endif
-            set_cutscene_message(160, 227, 1, 60);
+            set_cutscene_message(160, 227, 171, 60);
 #ifndef VERSION_JP
             play_sound(SOUND_PEACH_POWER_OF_THE_STARS, sEndPeachObj->header.gfx.cameraToObject);
 #endif
@@ -2714,7 +2714,7 @@ static void end_peach_cutscene_dialog_2(struct MarioState *m) {
 #else
         case 29:
 #endif
-            set_cutscene_message(160, 227, 2, 30);
+            set_cutscene_message(160, 227, 172, 30);
 #ifndef VERSION_JP
             play_sound(SOUND_PEACH_THANKS_TO_YOU, sEndPeachObj->header.gfx.cameraToObject);
 #endif
@@ -2733,14 +2733,14 @@ static void end_peach_cutscene_dialog_2(struct MarioState *m) {
 #else
         case 75:
 #endif
-            set_cutscene_message(160, 227, 3, 30);
+            set_cutscene_message(160, 227, 173, 30);
 #ifndef VERSION_JP
             play_sound(SOUND_PEACH_THANK_YOU_MARIO, sEndPeachObj->header.gfx.cameraToObject);
 #endif
             break;
 
         case TIMER_SOMETHING_SPECIAL:
-            set_cutscene_message(160, 227, 4, 40);
+            set_cutscene_message(160, 227, 174, 40);
 #ifndef VERSION_JP
             play_sound(SOUND_PEACH_SOMETHING_SPECIAL, sEndPeachObj->header.gfx.cameraToObject);
 #endif
@@ -2878,18 +2878,18 @@ static void end_peach_cutscene_dialog_3(struct MarioState *m) {
             sEndToadAnims[0] = 0;
             sEndToadAnims[1] = 2;
             D_8032CBE8 = 1;
-            set_cutscene_message(160, 227, 5, 30);
+            set_cutscene_message(160, 227, 175, 30);
 #ifndef VERSION_JP
             play_sound(SOUND_PEACH_BAKE_A_CAKE, sEndPeachObj->header.gfx.cameraToObject);
 #endif
             break;
 
         case 55:
-            set_cutscene_message(160, 227, 6, 40);
+            set_cutscene_message(160, 227, 176, 40);
             break;
 
         case 130:
-            set_cutscene_message(160, 227, 7, 50);
+            set_cutscene_message(160, 227, 177, 50);
 #ifndef VERSION_JP
             play_sound(SOUND_PEACH_FOR_MARIO, sEndPeachObj->header.gfx.cameraToObject);
 #endif
@@ -2919,7 +2919,7 @@ static void end_peach_cutscene_run_to_castle(struct MarioState *m) {
     }
 
     if (m->actionTimer == 95 && m->playerIndex == 0) {
-        set_cutscene_message(160, 227, 0, 40);
+        set_cutscene_message(160, 227, 178, 40); // would originally use DIALOG_170 (the first "Mario!"), changed to DIALOG_178 for mods
 #ifndef VERSION_JP
         play_sound(SOUND_PEACH_MARIO2, sEndPeachObj->header.gfx.cameraToObject);
 #endif
