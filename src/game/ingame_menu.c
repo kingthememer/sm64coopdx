@@ -2039,8 +2039,10 @@ void do_cutscene_handler(void) {
         return;
     }
 
-    struct DialogEntry *dialog = dialog_table_get(gCutsceneMsgIndex);
+    gDialogID = gCutsceneMsgIndex;
+    struct DialogEntry *dialog = dialog_table_get(gDialogID);
     const u8* str = sOverrideDialogString ? sHookString : dialog->str;
+    gDialogID = DIALOG_NONE;
 
     create_dl_ortho_matrix();
 
