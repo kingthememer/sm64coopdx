@@ -2039,18 +2039,27 @@ void do_cutscene_handler(void) {
         return;
     }
 
+    s32 oldDialogID = gDialogID;
     gDialogID = gCutsceneMsgIndex;
     struct DialogEntry *dialog = dialog_table_get(gDialogID);
     const u8* str = sOverrideDialogString ? sHookString : dialog->str;
-    gDialogID = DIALOG_NONE;
+    gDialogID = oldDialogID;
 
     create_dl_ortho_matrix();
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gCutsceneMsgFade);
 
-    // get the x coordinate of where the cutscene string starts.
-    x = get_str_x_pos_from_center(gCutsceneMsgXOffset, str, 10.0f);
+    s16 strPos = 0;
+    f32 spacesWidth = 0.0f;
+
+    while (str[strPos] != DIALOG_CHAR_TERMINATOR) {
+        spacesWidth += gDialogCharWidths[str[strPos]];
+        strPos++;
+    }
+    // return the x position of where the string starts as half the string's
+    // length from the position of the provided center.
+    x = (s16)(gCutsceneMsgXOffset - (s16)(spacesWidth / 2.0));
     print_generic_string(x, 240 - gCutsceneMsgYOffset, str);
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
